@@ -1,0 +1,65 @@
+DESIRED TABLE STRUCTURE
+
+client
+column	data type	description
+id	serial	Client ID - primary key
+age	integer	Client's age in years
+job	text	Client's type of job
+marital	text	Client's marital status
+education	text	Client's level of education
+credit_default	boolean	Whether the client's credit is in default
+housing	boolean	Whether the client has an existing housing loan (mortgage)
+loan	boolean	Whether the client has an existing personal loan
+
+id                 int64
+age                int64
+job               object
+marital           object
+education         object
+credit_default    object
+housing           object
+loan              object
+dtype: object
+================================================================================
+
+campaign
+column	data type	description
+campaign_id	serial	Campaign ID - primary key
+client_id	serial	Client ID - references id in the client table
+number_contacts	integer	Number of contact attempts to the client in the current campaign
+contact_duration	integer	Last contact duration in seconds
+pdays	integer	Number of days since contact in previous campaign (999 = not previously contacted)
+previous_campaign_contacts	integer	Number of contact attempts to the client in the previous campaign
+previous_outcome	boolean	Outcome of the previous campaign
+campaign_outcome	boolean	Outcome of the current campaign
+last_contact_date	date	Last date the client was contacted
+
+
+client_id                              int64
+contact                               object
+contact_duration                       int64
+number_contacts                        int64
+pdays                                  int64
+previous_campaign_contacts             int64
+previous_outcome                     float64
+campaign_outcome                      object
+campaign_id                            int64
+last_contact_date             datetime64[ns]
+dtype: object
+================================================================================
+
+economics
+column	data type	description
+client_id	serial	Client ID - references id in the client table
+emp_var_rate	float	Employment variation rate (quarterly indicator)
+cons_price_idx	float	Consumer price index (monthly indicator)
+euribor_three_months	float	Euro Interbank Offered Rate (euribor) three month rate (daily indicator)
+number_employed	float	Number of employees (quarterly indicator)
+
+client_id                 int64
+emp_var_rate            float64
+cons_price_idx          float64
+euribor_three_months    float64
+number_employed         float64
+dtype: object
+================================================================================
