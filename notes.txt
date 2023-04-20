@@ -1,3 +1,7 @@
+Error ...
+Did you create a column called "job" with data type set to text in the "client" table?
+
+
 DESIRED TABLE STRUCTURE
 
 client
